@@ -1,0 +1,38 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Обработка данных форм</title>
+</head>
+<body>
+    <form action="/cgi-bin/form.py">
+    	<input type="text" name="TEXT_2"> Номер договора<Br>
+    	<p><b>Правовой статус сторон:</b><Br>
+
+    	<p><b>Инвестор:</b><Br>
+    	<input type="radio" name="investor" value="1"> Юридическое лицо<Br>
+		<input type="radio" name="investor" value="2"> Индивидуальный предпрениматель<Br>
+		<input type="radio" name="investor" value="3"> Физическое лицо<Br>
+    	
+    	<p><b>Получатель инвестиций:</b><Br>
+    	<input type="radio" name="investpoluch" value="1"> Юридическое лицо<Br>
+		<input type="radio" name="investpoluch" value="2"> Индивидуальный предпрениматель<Br>
+		<input type="radio" name="investpoluch" value="3"> Физическое лицо<Br>
+		        
+        <p><b>Работы по строительству либо реконструкции включают в себя:</b><Br>
+		<input type="checkbox" name="works1" value="1"> Строительство<Br>
+        <input type="checkbox" name="works2" value="1"> Отделка<Br>
+        <input type="checkbox" name="works3" value="1"> Устройство и присоединение сетей<Br>
+        
+        <input type="text" name="TEXT_1"> Сумма по договору<Br>
+        <input type="submit">
+        <input type="reset">
+        
+        <div>Relay 1:
+			<form action= '{% url my_view_name%}' method="POST">
+	     	<input type="submit" value="Toggle" id="toggle1" />
+ 			</form>
+		</div>
+    </form>
+</body>
+</html>
