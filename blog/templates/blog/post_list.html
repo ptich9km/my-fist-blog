@@ -1,48 +1,59 @@
 ﻿<!DOCTYPE HTML>
-<html>
-<head>
-<meta charset="utf-8">
-<title>test</title>
-</head>
-<body>
-    {% for post in posts %}
-        <div>
-            <p>published: {{ post.published_date }}</p>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
-    <h2><a href="">My 2 post</a></h2>
-	<h2><a href="">My 3 post</a></h2>
-	<h2><a href="">My 4 post</a></h2>
-	<h2><a href="">My 5 post</a></h2>
-	<h2><a href="">My 6 post</a></h2>
-	<h2><a href="">My 7 post</a></h2>
-	
-	<form action="/cgi-bin/form.py">
-    	<input type="text" name="TEXT_2"> test<Br>
-    	<p><b>test:</b><Br>
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
 
-    	<p><b>test:</b><Br>
-    	<input type="radio" name="investor" value="1"> test<Br>
-		<input type="radio" name="investor" value="2"> test<Br>
-		<input type="radio" name="investor" value="3"> test<Br>
-    	
-    	<p><b>test:</b><Br>
-    	<input type="radio" name="investpoluch" value="1"> test<Br>
-		<input type="radio" name="investpoluch" value="2"> test<Br>
-		<input type="radio" name="investpoluch" value="3"> test<Br>
-		        
-        <p><b>test:</b><Br>
-		<input type="checkbox" name="works1" value="1"> test<Br>
-        <input type="checkbox" name="works2" value="1"> test<Br>
-        <input type="checkbox" name="works3" value="1"> test<Br>
-        
-        <input type="text" name="TEXT_1"> test<Br>
-        <input type="submit">
-        <input type="reset">
-        
-		</div>
-    </form>
-</body>
+<html>
+	<head>
+		<title>test</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+	</head>
+	<body>
+    {% block content %}
+        {% for post in posts %}
+            <div class="post">
+                <div class="date">
+                    {{ post.published_date }}
+                </div>
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    {% endblock content %}
+		
+		<h2><a href="">My 2 post</a></h2>
+		<h2><a href="">My 3 post</a></h2>
+		<h2><a href="">My 4 post</a></h2>
+		<h2><a href="">My 5 post</a></h2>
+		<h2><a href="">My 6 post</a></h2>
+		<h2><a href="">My 7 post</a></h2>
+		
+		<form action="/cgi-bin/form.py">
+			<input type="text" name="TEXT_2"> test<Br>
+			<p><b>test:</b><Br>
+
+			<p><b>test:</b><Br>
+			<input type="radio" name="investor" value="1"> test<Br>
+			<input type="radio" name="investor" value="2"> test<Br>
+			<input type="radio" name="investor" value="3"> test<Br>
+			
+			<p><b>test:</b><Br>
+			<input type="radio" name="investpoluch" value="1"> test<Br>
+			<input type="radio" name="investpoluch" value="2"> test<Br>
+			<input type="radio" name="investpoluch" value="3"> test<Br>
+					
+			<p><b>test:</b><Br>
+			<input type="checkbox" name="works1" value="1"> test<Br>
+			<input type="checkbox" name="works2" value="1"> test<Br>
+			<input type="checkbox" name="works3" value="1"> test<Br>
+			
+			<input type="text" name="TEXT_1"> test<Br>
+			<input type="submit">
+			<input type="reset">
+			
+			</div>
+		</form>
+	</body>
 </html>
